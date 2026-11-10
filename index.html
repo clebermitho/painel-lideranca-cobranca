@@ -409,7 +409,7 @@
         </div>
         <div class="coverage">
           <span class="coverage-label">Cobertura do relatório</span>
-          <strong>Jan — Set 2026</strong>
+          <strong>Jan — Out 2026</strong>
           <small>2º semestre em andamento</small>
         </div>
       </div>
@@ -441,7 +441,7 @@
             <select id="metricFilter"><option value="average">Média mensal (%)</option><option value="consolidated">Recebido ÷ meta (%)</option></select>
           </div>
         </div>
-        <div class="source-note">Base: <strong>Controle de Resultado - Liderança - 2110.xlsx</strong> (jan–set)<br>Percentual = recebido ÷ meta</div>
+        <div class="source-note">Base: <strong>Controle de Resultado - Liderança - 2110.xlsx</strong> (jan–set) e <strong>fechamento de outubro</strong> do Gestão de Acordos<br>Percentual = recebido ÷ meta · Cofen pelo H.O.</div>
       </div>
 
       <section class="view active" id="view-overview" role="tabpanel"></section>
@@ -450,7 +450,7 @@
       <section class="view" id="view-months" role="tabpanel"></section>
       <section class="view" id="view-leaders" role="tabpanel"></section>
     </main>
-    <footer class="site-footer"><div class="site-footer-inner"><span><strong>Pagueplay</strong> · Gestão de cobrança · Painel de liderança 2026</span><span>Fonte: Controle de Resultado - Liderança (planilha de 21/10)</span></div></footer>
+    <footer class="site-footer"><div class="site-footer-inner"><span><strong>Pagueplay</strong> · Gestão de cobrança · Painel de liderança 2026</span><span>Fonte: Controle de Resultado - Liderança (planilha de 21/10) · outubro: fechamento selado do Gestão de Acordos</span></div></footer>
   </div>
 
   <div class="modal-backdrop" id="leaderModal" role="dialog" aria-modal="true" aria-labelledby="modalLeaderName">
@@ -472,8 +472,8 @@
     const DATA = {
       "title": "Painel de Liderança — Cobrança",
       "year": 2026,
-      "sourceFile": "Controle de Resultado - Liderança - 2110.xlsx",
-      "lastAvailableMonth": "Setembro",
+      "sourceFile": "Controle de Resultado - Liderança - 2110.xlsx + fechamento de outubro (Gestão de Acordos)",
+      "lastAvailableMonth": "Outubro",
       "leaders": [
         {
           "id": "brunno_piccolo",
@@ -483,65 +483,72 @@
             {
               "key": "jan",
               "label": "Janeiro",
-              "target": 520000.0,
+              "target": 520000,
               "received": 567859.12,
               "attainment": 1.0920367692307693
             },
             {
               "key": "fev",
               "label": "Fevereiro",
-              "target": 320000.0,
+              "target": 320000,
               "received": 403042.97,
               "attainment": 1.25950928125
             },
             {
               "key": "mar",
               "label": "Março",
-              "target": 735000.0,
+              "target": 735000,
               "received": 750410.93,
               "attainment": 1.0209672517006803
             },
             {
               "key": "abr",
               "label": "Abril",
-              "target": 740000.0,
+              "target": 740000,
               "received": 622059.33,
               "attainment": 0.8406207162162161
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 197000.0,
+              "target": 197000,
               "received": 132899.62,
               "attainment": 0.6746173604060913
             },
             {
               "key": "jun",
               "label": "Junho",
-              "target": 134000.0,
+              "target": 134000,
               "received": 148941.25,
               "attainment": 1.1115018656716418
             },
             {
               "key": "jul",
               "label": "Julho",
-              "target": 480000.0,
+              "target": 480000,
               "received": 510608.71,
               "attainment": 1.0637681458333335
             },
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 120000.0,
+              "target": 120000,
               "received": 67506.65,
               "attainment": 0.5625554166666666
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 300000.0,
+              "target": 300000,
               "received": 243857.15,
               "attainment": 0.8128571666666666
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 222000,
+              "received": 248918.51,
+              "attainment": 1.1212545495495496
             }
           ]
         },
@@ -602,16 +609,23 @@
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 70000.0,
+              "target": 70000,
               "received": 57629.42,
               "attainment": 0.8232774285714285
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 67000.0,
+              "target": 67000,
               "received": 79634.34,
               "attainment": 1.18857223880597
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 66340,
+              "received": 74911.55,
+              "attainment": 1.1292063611697318
             }
           ]
         },
@@ -647,44 +661,51 @@
             {
               "key": "abr",
               "label": "Abril",
-              "target": 40000.0,
+              "target": 40000,
               "received": 18436.6,
               "attainment": 0.46091499999999996
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 115000.0,
+              "target": 115000,
               "received": 106819.7,
               "attainment": 0.9288669565217391
             },
             {
               "key": "jun",
               "label": "Junho",
-              "target": 146000.0,
+              "target": 146000,
               "received": 120828.59,
               "attainment": 0.8275930821917808
             },
             {
               "key": "jul",
               "label": "Julho",
-              "target": 56000.0,
+              "target": 56000,
               "received": 38335.72,
               "attainment": 0.6845664285714286
             },
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 80000.0,
+              "target": 80000,
               "received": 63496.65,
               "attainment": 0.793708125
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 135000.0,
+              "target": 135000,
               "received": 75693.68,
               "attainment": 0.5606939259259259
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 40000,
+              "received": 11659.86,
+              "attainment": 0.2914965
             }
           ]
         },
@@ -745,16 +766,23 @@
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 30000.0,
+              "target": 30000,
               "received": 30160.92,
               "attainment": 1.005364
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 60000.0,
+              "target": 60000,
               "received": 78763.53,
               "attainment": 1.3127255
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 100000,
+              "received": 84814.18,
+              "attainment": 0.8481418
             }
           ]
         },
@@ -774,58 +802,65 @@
             {
               "key": "fev",
               "label": "Fevereiro",
-              "target": 100000.0,
-              "received": 116000.0,
+              "target": 100000,
+              "received": 116000,
               "attainment": 1.16
             },
             {
               "key": "mar",
               "label": "Março",
-              "target": 130000.0,
+              "target": 130000,
               "received": 117447.76,
               "attainment": 0.9034443076923077
             },
             {
               "key": "abr",
               "label": "Abril",
-              "target": 125000.0,
+              "target": 125000,
               "received": 115121.6,
               "attainment": 0.9209728
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 115000.0,
+              "target": 115000,
               "received": 116753.54,
               "attainment": 1.0152481739130435
             },
             {
               "key": "jun",
               "label": "Junho",
-              "target": 150000.0,
+              "target": 150000,
               "received": 173395.45,
               "attainment": 1.1559696666666668
             },
             {
               "key": "jul",
               "label": "Julho",
-              "target": 124000.0,
+              "target": 124000,
               "received": 134913.52,
               "attainment": 1.088012258064516
             },
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 100000.0,
+              "target": 100000,
               "received": 84106.31,
               "attainment": 0.8410631
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 55000.0,
+              "target": 55000,
               "received": 74361.52,
               "attainment": 1.3520276363636365
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 100000,
+              "received": 85554.36,
+              "attainment": 0.8555436
             }
           ]
         },
@@ -837,35 +872,35 @@
             {
               "key": "jan",
               "label": "Janeiro",
-              "target": 195000.0,
+              "target": 195000,
               "received": 142560.47,
               "attainment": 0.7310793333333333
             },
             {
               "key": "fev",
               "label": "Fevereiro",
-              "target": 158500.0,
+              "target": 158500,
               "received": 130397.7,
               "attainment": 0.8226984227129337
             },
             {
               "key": "mar",
               "label": "Março",
-              "target": 170000.0,
+              "target": 170000,
               "received": 150478.77,
               "attainment": 0.8851692352941176
             },
             {
               "key": "abr",
               "label": "Abril",
-              "target": 165000.0,
+              "target": 165000,
               "received": 165930.92,
               "attainment": 1.0056419393939395
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 220000.0,
+              "target": 220000,
               "received": 222002.48,
               "attainment": 1.0091021818181818
             },
@@ -879,23 +914,30 @@
             {
               "key": "jul",
               "label": "Julho",
-              "target": 250000.0,
+              "target": 250000,
               "received": 201910.88,
               "attainment": 0.8076435200000001
             },
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 305000.0,
+              "target": 305000,
               "received": 243103.31,
               "attainment": 0.7970600327868852
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 55000.0,
+              "target": 55000,
               "received": 47150.67,
               "attainment": 0.857284909090909
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 66340,
+              "received": 53197.3,
+              "attainment": 0.8018887548990051
             }
           ]
         },
@@ -907,65 +949,72 @@
             {
               "key": "jan",
               "label": "Janeiro",
-              "target": 195000.0,
+              "target": 195000,
               "received": 127034.97,
               "attainment": 0.6514613846153846
             },
             {
               "key": "fev",
               "label": "Fevereiro",
-              "target": 178500.0,
+              "target": 178500,
               "received": 153954.27,
               "attainment": 0.8624889075630251
             },
             {
               "key": "mar",
               "label": "Março",
-              "target": 185000.0,
+              "target": 185000,
               "received": 195428.72,
               "attainment": 1.0563714594594595
             },
             {
               "key": "abr",
               "label": "Abril",
-              "target": 175000.0,
+              "target": 175000,
               "received": 186710.09,
               "attainment": 1.0669148
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 115000.0,
+              "target": 115000,
               "received": 125662.14,
               "attainment": 1.0927142608695652
             },
             {
               "key": "jun",
               "label": "Junho",
-              "target": 146000.0,
+              "target": 146000,
               "received": 127776.31,
               "attainment": 0.8751802054794521
             },
             {
               "key": "jul",
               "label": "Julho",
-              "target": 124500.0,
+              "target": 124500,
               "received": 145674.58,
               "attainment": 1.1700769477911646
             },
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 120000.0,
+              "target": 120000,
               "received": 74322.45,
               "attainment": 0.6193537499999999
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 55000.0,
+              "target": 55000,
               "received": 48198.96,
               "attainment": 0.8763447272727273
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 66340,
+              "received": 64818.86,
+              "attainment": 0.9770705456738016
             }
           ]
         },
@@ -977,65 +1026,72 @@
             {
               "key": "jan",
               "label": "Janeiro",
-              "target": 495000.0,
+              "target": 495000,
               "received": 396058.95,
               "attainment": 0.800119090909091
             },
             {
               "key": "fev",
               "label": "Fevereiro",
-              "target": 122500.0,
+              "target": 122500,
               "received": 156464.86,
               "attainment": 1.2772641632653061
             },
             {
               "key": "mar",
               "label": "Março",
-              "target": 200000.0,
-              "received": 195000.0,
+              "target": 200000,
+              "received": 195000,
               "attainment": 0.975
             },
             {
               "key": "abr",
               "label": "Abril",
-              "target": 300000.0,
-              "received": 317000.0,
+              "target": 300000,
+              "received": 317000,
               "attainment": 1.0566666666666666
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 450000.0,
+              "target": 450000,
               "received": 519793.68,
               "attainment": 1.1550970666666667
             },
             {
               "key": "jun",
               "label": "Junho",
-              "target": 300000.0,
+              "target": 300000,
               "received": 227801.5,
               "attainment": 0.7593383333333333
             },
             {
               "key": "jul",
               "label": "Julho",
-              "target": 300000.0,
+              "target": 300000,
               "received": 192698.87,
               "attainment": 0.6423295666666666
             },
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 353125.0,
+              "target": 353125,
               "received": 313420.47,
               "attainment": 0.8875623929203539
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 350000.0,
+              "target": 350000,
               "received": 313380.3,
               "attainment": 0.8953722857142857
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 250000,
+              "received": 237721.14,
+              "attainment": 0.9508845600000001
             }
           ]
         },
@@ -1089,7 +1145,7 @@
             {
               "key": "jul",
               "label": "Julho",
-              "target": 40000.0,
+              "target": 40000,
               "received": 100974.19,
               "attainment": 2.52435475
             },
@@ -1103,9 +1159,16 @@
             {
               "key": "set",
               "label": "Setembro",
-              "target": 100000.0,
+              "target": 100000,
               "received": 84203.86,
               "attainment": 0.8420386
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 110000,
+              "received": 89276.22,
+              "attainment": 0.811602
             }
           ]
         },
@@ -1117,42 +1180,42 @@
             {
               "key": "jan",
               "label": "Janeiro",
-              "target": 20000.0,
+              "target": 20000,
               "received": 20352.13,
               "attainment": 1.0176065
             },
             {
               "key": "fev",
               "label": "Fevereiro",
-              "target": 30000.0,
+              "target": 30000,
               "received": 30447.39,
               "attainment": 1.014913
             },
             {
               "key": "mar",
               "label": "Março",
-              "target": 50000.0,
+              "target": 50000,
               "received": 75170.12,
               "attainment": 1.5034024
             },
             {
               "key": "abr",
               "label": "Abril",
-              "target": 125000.0,
+              "target": 125000,
               "received": 93790.81,
               "attainment": 0.75032648
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 112500.0,
+              "target": 112500,
               "received": 96235.78,
               "attainment": 0.8554291555555555
             },
             {
               "key": "jun",
               "label": "Junho",
-              "target": 112500.0,
+              "target": 112500,
               "received": 87847.93,
               "attainment": 0.7808704888888889
             },
@@ -1173,9 +1236,16 @@
             {
               "key": "set",
               "label": "Setembro",
-              "target": 100000.0,
+              "target": 100000,
               "received": 103997.92,
               "attainment": 1.0399791999999999
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 130000,
+              "received": 118193.1,
+              "attainment": 0.9091776923076923
             }
           ]
         },
@@ -1187,65 +1257,72 @@
             {
               "key": "jan",
               "label": "Janeiro",
-              "target": 20000.0,
+              "target": 20000,
               "received": 20352.13,
               "attainment": 1.0176065
             },
             {
               "key": "fev",
               "label": "Fevereiro",
-              "target": 30000.0,
+              "target": 30000,
               "received": 30447.39,
               "attainment": 1.014913
             },
             {
               "key": "mar",
               "label": "Março",
-              "target": 50000.0,
+              "target": 50000,
               "received": 75170.12,
               "attainment": 1.5034024
             },
             {
               "key": "abr",
               "label": "Abril",
-              "target": 125000.0,
-              "received": 112522.0,
+              "target": 125000,
+              "received": 112522,
               "attainment": 0.900176
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 112500.0,
-              "received": 127351.0,
+              "target": 112500,
+              "received": 127351,
               "attainment": 1.1320088888888888
             },
             {
               "key": "jun",
               "label": "Junho",
-              "target": 150000.0,
+              "target": 150000,
               "received": 107744.91,
               "attainment": 0.7182994
             },
             {
               "key": "jul",
               "label": "Julho",
-              "target": 550000.0,
+              "target": 550000,
               "received": 553568.16,
               "attainment": 1.0064875636363637
             },
             {
               "key": "ago",
               "label": "Agosto",
-              "target": 560000.0,
+              "target": 560000,
               "received": 440429.17,
               "attainment": 0.7864806607142857
             },
             {
               "key": "set",
               "label": "Setembro",
-              "target": 520000.0,
+              "target": 520000,
               "received": 388652.95,
               "attainment": 0.7474095192307693
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": null,
+              "received": null,
+              "attainment": null
             }
           ]
         },
@@ -1257,49 +1334,49 @@
             {
               "key": "jan",
               "label": "Janeiro",
-              "target": 155000.0,
+              "target": 155000,
               "received": 79300.54,
               "attainment": 0.5116163870967742
             },
             {
               "key": "fev",
               "label": "Fevereiro",
-              "target": 155000.0,
+              "target": 155000,
               "received": 83640.7,
               "attainment": 0.5396174193548386
             },
             {
               "key": "mar",
               "label": "Março",
-              "target": 146500.0,
+              "target": 146500,
               "received": 116920.07,
               "attainment": 0.7980892150170649
             },
             {
               "key": "abr",
               "label": "Abril",
-              "target": 111000.0,
+              "target": 111000,
               "received": 83154.7,
               "attainment": 0.7491414414414415
             },
             {
               "key": "mai",
               "label": "Maio",
-              "target": 115000.0,
+              "target": 115000,
               "received": 133601.68,
               "attainment": 1.1617537391304347
             },
             {
               "key": "jun",
               "label": "Junho",
-              "target": 146000.0,
+              "target": 146000,
               "received": 103347.55,
               "attainment": 0.7078599315068493
             },
             {
               "key": "jul",
               "label": "Julho",
-              "target": 150000.0,
+              "target": 150000,
               "received": 100365.16,
               "attainment": 0.6691010666666667
             },
@@ -1316,6 +1393,13 @@
               "target": null,
               "received": null,
               "attainment": null
+            },
+            {
+              "key": "out",
+              "label": "Outubro",
+              "target": 30000,
+              "received": 14544.14,
+              "attainment": 0.48480466666666666
             }
           ]
         }
@@ -1336,18 +1420,18 @@
       stephanie_bernardes: {graduation:{state:'completed',label:'Concluída'},post:{state:'studying',label:'Cursando'}}
     };
     const MIN_MONTHS = 3; // Top 5 só para quem tem mais de 3 meses com dados
-    const MONTH_KEYS = ['jan','fev','mar','abr','mai','jun','jul','ago','set'];
-    const MONTH_SHORT = {jan:'Jan',fev:'Fev',mar:'Mar',abr:'Abr',mai:'Mai',jun:'Jun',jul:'Jul',ago:'Ago',set:'Set'};
+    const MONTH_KEYS = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out'];
+    const MONTH_SHORT = {jan:'Jan',fev:'Fev',mar:'Mar',abr:'Abr',mai:'Mai',jun:'Jun',jul:'Jul',ago:'Ago',set:'Set',out:'Out'};
     const PERIODS = {
-      year: {label:'Ano 2026', sub:'Janeiro a setembro', months: MONTH_KEYS, partial:true},
+      year: {label:'Ano 2026', sub:'Janeiro a outubro', months: MONTH_KEYS, partial:true},
       h1: {label:'1º semestre', sub:'Janeiro a junho', months:['jan','fev','mar','abr','mai','jun']},
-      h2: {label:'2º semestre', sub:'Julho a dezembro', months:['jul','ago','set'], partial:true},
+      h2: {label:'2º semestre', sub:'Julho a dezembro', months:['jul','ago','set','out'], partial:true},
       q1: {label:'1º trimestre', sub:'Janeiro a março', months:['jan','fev','mar']},
       q2: {label:'2º trimestre', sub:'Abril a junho', months:['abr','mai','jun']},
       q3: {label:'3º trimestre', sub:'Julho a setembro', months:['jul','ago','set']},
-      q4: {label:'4º trimestre', sub:'Outubro a dezembro', months:[], empty:true},
+      q4: {label:'4º trimestre', sub:'Outubro a dezembro', months:['out'], partial:true},
     };
-    const state = {sector:'all', search:'', metric:'average', quarter:'q1', month:'set', modalLeader:null, photoLeader:null};
+    const state = {sector:'all', search:'', metric:'average', quarter:'q1', month:'out', modalLeader:null, photoLeader:null};
     const photoStorageKey = 'painelLiderancaFotos2026-v2';
     let storedLeaderPhotos = {};
     try { storedLeaderPhotos = JSON.parse(localStorage.getItem(photoStorageKey) || '{}'); } catch (_) { storedLeaderPhotos = {}; }
@@ -1509,7 +1593,7 @@
       const elig=rank0.filter(x=>x.stats.months>MIN_MONTHS), rank=[...elig,...rank0.filter(x=>x.stats.months<=MIN_MONTHS)]; rank.unranked=rank0.unranked;
       const monthlyPoints=MONTH_KEYS.map(k=>{const ps=portfolio(leaders,[k]);return {label:MONTH_SHORT[k],value:ps.attainment};});
       document.querySelector('#view-overview').innerHTML=`
-        <div class="section-head"><div><h2>Visão geral do ano</h2><p>Consolidado de janeiro a setembro, ordenado pelo alcance da meta.</p></div><span class="status-note">Ano parcial</span></div>
+        <div class="section-head"><div><h2>Visão geral do ano</h2><p>Consolidado de janeiro a outubro, ordenado pelo alcance da meta.</p></div><span class="status-note">Ano parcial</span></div>
         <div class="kpis">
           <article class="kpi"><div class="kpi-label">Alcance consolidado</div><div class="kpi-value">${pct(p.attainment)}</div><div class="kpi-meta">${p.attainment>=1?'Meta geral atingida':'Faltam '+pct(1-p.attainment)+' para 100%'}</div><div class="kpi-meter"><span style="width:${Math.min(100,(p.attainment||0)*100)}%"></span></div></article>
           <article class="kpi"><div class="kpi-label">Recebido</div><div class="kpi-value">${compactMoney(p.received)}</div><div class="kpi-meta">de ${compactMoney(p.target)} em metas</div></article>
@@ -1536,13 +1620,13 @@
       document.querySelector('#view-semesters').innerHTML=`<div class="section-head"><div><h2>Leitura semestral</h2><p>Comparação do primeiro semestre fechado com o segundo semestre em andamento.</p></div></div>
         <div class="period-grid">${periodCard('h1','1º semestre')}${periodCard('h2','2º semestre')}</div>
         <div class="section-head"><div><h2>Ranking do 1º semestre</h2><p>Consolidado de janeiro a junho.</p></div></div>${rankingTable(ranked(leaders,PERIODS.h1.months))}
-        <div class="section-head"><div><h2>Ranking do 2º semestre</h2><p>Resultado parcial disponível: julho a setembro.</p></div><span class="status-note">Parcial</span></div>${rankingTable(ranked(leaders,PERIODS.h2.months))}`;
+        <div class="section-head"><div><h2>Ranking do 2º semestre</h2><p>Resultado parcial disponível: julho a outubro.</p></div><span class="status-note">Parcial</span></div>${rankingTable(ranked(leaders,PERIODS.h2.months))}`;
     }
     function renderQuarters() {
       const p=PERIODS[state.quarter], leaders=filteredLeaders(), rank=ranked(leaders,p.months), port=portfolio(leaders,p.months);
       document.querySelector('#view-quarters').innerHTML=`<div class="section-head"><div><h2>Resultado por trimestre</h2><p>Selecione um trimestre para atualizar indicadores e ranking.</p></div>${periodBadge(p)}</div>
         <div class="selector-row">${['q1','q2','q3','q4'].map((k,i)=>`<button class="selector ${state.quarter===k?'active':''}" data-quarter="${k}">${i+1}º trimestre${PERIODS[k].partial?' · parcial':''}</button>`).join('')}</div>
-        ${p.empty?'<article class="panel" style="margin-top:16px"><div class="empty"><strong>4º trimestre ainda sem dados.</strong><br>O relatório atual cobre janeiro a setembro de 2026.</div></article>':`
+        ${p.empty?'<article class="panel" style="margin-top:16px"><div class="empty"><strong>4º trimestre ainda sem dados.</strong><br>O relatório atual cobre janeiro a outubro de 2026.</div></article>':`
         <div class="kpis" style="margin-top:16px"><article class="kpi"><div class="kpi-label">Alcance</div><div class="kpi-value">${pct(port.attainment)}</div><div class="kpi-meta">${esc(p.sub)}</div></article><article class="kpi"><div class="kpi-label">Recebido</div><div class="kpi-value">${compactMoney(port.received)}</div><div class="kpi-meta">Meta: ${compactMoney(port.target)}</div></article><article class="kpi"><div class="kpi-label">Líderes na meta</div><div class="kpi-value">${port.above}/${port.leaders}</div><div class="kpi-meta">no recorte selecionado</div></article><article class="kpi"><div class="kpi-label">1º lugar</div><div class="kpi-value" style="font-family:var(--display);font-size:24px">${rank[0]?esc(rank[0].leader.name):'—'}</div><div class="kpi-meta">${rank[0]?pct(rank[0].score):''}</div></article></div>
         <div class="section-head"><div><h2>Ranking · ${esc(p.label)}</h2><p>${esc(p.sub)}${p.partial?' · dados parciais':''}</p></div></div>${rankingTable(rank)}`}`;
     }
@@ -1602,10 +1686,10 @@
       document.querySelector('#modalLeaderName').textContent=l.name;
       document.querySelector('#modalLeaderSector').textContent=l.sector+' · '+(rank?rank+'º no ranking anual':l.role?l.role+' · fora do ranking':'sem posição anual');
       document.querySelector('#modalContent').innerHTML=`
-        <div class="kpis detail-kpis"><article class="kpi"><div class="kpi-label">Alcance no ano</div><div class="kpi-value">${pct(a.attainment)}</div><div class="kpi-meta">Jan — Set</div></article><article class="kpi"><div class="kpi-label">Recebido</div><div class="kpi-value">${compactMoney(a.received)}</div><div class="kpi-meta">Meta: ${compactMoney(a.target)}</div></article><article class="kpi"><div class="kpi-label">Média mensal</div><div class="kpi-value">${pct(a.monthlyAverage)}</div><div class="kpi-meta">média dos meses com dados</div></article><article class="kpi"><div class="kpi-label">Meses na meta</div><div class="kpi-value">${l.monthly.filter(m=>m.attainment>=1).length}<small style="font-size:.5em;color:var(--muted)"> / ${a.months}</small></div><div class="kpi-meta">meses com ≥ 100%</div></article></div>
+        <div class="kpis detail-kpis"><article class="kpi"><div class="kpi-label">Alcance no ano</div><div class="kpi-value">${pct(a.attainment)}</div><div class="kpi-meta">Jan — Out</div></article><article class="kpi"><div class="kpi-label">Recebido</div><div class="kpi-value">${compactMoney(a.received)}</div><div class="kpi-meta">Meta: ${compactMoney(a.target)}</div></article><article class="kpi"><div class="kpi-label">Média mensal</div><div class="kpi-value">${pct(a.monthlyAverage)}</div><div class="kpi-meta">média dos meses com dados</div></article><article class="kpi"><div class="kpi-label">Meses na meta</div><div class="kpi-value">${l.monthly.filter(m=>m.attainment>=1).length}<small style="font-size:.5em;color:var(--muted)"> / ${a.months}</small></div><div class="kpi-meta">meses com ≥ 100%</div></article></div>
         <section class="education-panel"><div class="education-panel-head"><div><h3>Formação acadêmica</h3><p>Situação atual de graduação e pós-graduação</p></div></div>${educationBadges(l)}</section>
         <div class="detail-grid"><article class="panel"><div class="panel-head"><div><h3>Evolução percentual</h3><p>A linha tracejada marca 100% da meta</p></div></div><div class="panel-body chart-box">${lineChart(points,{label:'Evolução de '+l.name})}</div></article><article class="panel"><div class="panel-head"><div><h3>Meta x recebido</h3><p>As duas barras representam cada mês</p></div></div><div class="panel-body">${compareChart(l,MONTH_KEYS)}<div class="legend" style="margin-top:16px"><span class="legend-item"><span class="legend-dot" style="background:#c3cad2"></span>Meta</span><span class="legend-item"><span class="legend-dot"></span>Recebido</span></div></div></article></div>
-        <article class="panel detail-table-wrap"><div class="panel-head"><div><h3>Detalhe mês a mês</h3><p>Meta, recebido e alcance registrados na planilha</p></div></div><table class="ranking"><thead><tr><th>Mês</th><th>Meta</th><th>Recebido</th><th>Alcance</th></tr></thead><tbody>${l.monthly.map(m=>m.note?`<tr><td><strong>${esc(m.label)}</strong></td><td colspan="3" class="note-cell">${esc(m.note)}</td></tr>`:`<tr><td><strong>${esc(m.label)}</strong></td><td class="money">${m.target==null?'—':money.format(m.target)}</td><td class="money">${m.received==null?'—':money.format(m.received)}</td><td><span class="pill ${m.attainment==null?'':tone(m.attainment)}">${pct(m.attainment)}</span></td></tr>`).join('')}</tbody></table></article>
+        <article class="panel detail-table-wrap"><div class="panel-head"><div><h3>Detalhe mês a mês</h3><p>Meta, recebido e alcance (jan–set da planilha; outubro do fechamento)</p></div></div><table class="ranking"><thead><tr><th>Mês</th><th>Meta</th><th>Recebido</th><th>Alcance</th></tr></thead><tbody>${l.monthly.map(m=>m.note?`<tr><td><strong>${esc(m.label)}</strong></td><td colspan="3" class="note-cell">${esc(m.note)}</td></tr>`:`<tr><td><strong>${esc(m.label)}</strong></td><td class="money">${m.target==null?'—':money.format(m.target)}</td><td class="money">${m.received==null?'—':money.format(m.received)}</td><td><span class="pill ${m.attainment==null?'':tone(m.attainment)}">${pct(m.attainment)}</span></td></tr>`).join('')}</tbody></table></article>
         <p class="footnote"><strong>Critério do painel:</strong> o alcance consolidado soma os valores recebidos e divide pela soma das metas no período. Meses sem informação não entram no cálculo. O percentual de cada mês é sempre recebido ÷ meta.</p>`;
       document.querySelector('#leaderModal').classList.add('open'); document.body.style.overflow='hidden'; playAnim(document.querySelector('#modalContent')); document.querySelector('#modalClose').focus();
     }
