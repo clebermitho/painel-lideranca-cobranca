@@ -1419,7 +1419,7 @@
       laysa_lopes: {graduation:{state:'unknown',label:'Não informada'},post:{state:'unknown',label:'Não informada'}},
       stephanie_bernardes: {graduation:{state:'completed',label:'Concluída'},post:{state:'studying',label:'Cursando'}}
     };
-    const MIN_MONTHS = 3; // Top 5 só para quem tem mais de 3 meses com dados
+    const MIN_MONTHS = 6; // Ranking anual (geral) só para quem tem ao menos 6 meses com dados
     const MONTH_KEYS = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out'];
     const MONTH_SHORT = {jan:'Jan',fev:'Fev',mar:'Mar',abr:'Abr',mai:'Mai',jun:'Jun',jul:'Jul',ago:'Ago',set:'Set',out:'Out'};
     const PERIODS = {
@@ -1536,10 +1536,15 @@
       out.unranked=scored.filter(x=>x.leader.role || x.stats.attainment==null).sort((a,b)=>(a.leader.role?0:1)-(b.leader.role?0:1) || a.leader.name.localeCompare(b.leader.name,'pt-BR'));
       return out;
     }
-    function unrankedReason(x) { return x.leader.role ? x.leader.role+' · fora do ranking'+(x.stats.attainment!=null?' · '+pct(x.score):'') : 'Sem dados no período'; }
+    function rankedAnnual(leaders) {
+      const r=ranked(leaders,PERIODS.year.months), out=r.filter(x=>x.stats.months>=MIN_MONTHS);
+      out.unranked=[...r.filter(x=>x.stats.months<MIN_MONTHS).map(x=>({...x,short:true})),...r.unranked];
+      return out;
+    }
+    function unrankedReason(x) { return x.short ? 'Menos de '+MIN_MONTHS+' meses de dados ('+x.stats.months+') · '+pct(x.score) : x.leader.role ? x.leader.role+' · fora do ranking'+(x.stats.attainment!=null?' · '+pct(x.score):'') : 'Sem dados no período'; }
     function unrankedSection(list) {
       if (!list || !list.length) return '';
-      return `<section class="ranking-rest"><div class="ranking-rest-head"><div><h3>Fora do ranking</h3><p>Capitães e líderes sem dados no período</p></div></div><div class="unranked-list">${list.map(x=>`<div class="unranked-item">${avatarButton(x.leader,'size-rest')}<button class="leader-link" data-leader="${esc(x.leader.id)}"><span class="leader-name">${esc(x.leader.name)}</span><span class="leader-sector">${esc(x.leader.sector)}</span><span class="unranked-why ${x.leader.role?'is-role':''}">${esc(unrankedReason(x))}</span></button></div>`).join('')}</div></section>`;
+      return `<section class="ranking-rest"><div class="ranking-rest-head"><div><h3>Fora do ranking</h3><p>${list.some(x=>x.short)?'Menos de '+MIN_MONTHS+' meses de dados, capitães e líderes sem dados no período':'Capitães e líderes sem dados no período'}</p></div></div><div class="unranked-list">${list.map(x=>`<div class="unranked-item">${avatarButton(x.leader,'size-rest')}<button class="leader-link" data-leader="${esc(x.leader.id)}"><span class="leader-name">${esc(x.leader.name)}</span><span class="leader-sector">${esc(x.leader.sector)}</span><span class="unranked-why ${x.leader.role?'is-role':''}">${esc(unrankedReason(x))}</span></button></div>`).join('')}</div></section>`;
     }
     function metricLabel() { return state.metric==='average' ? 'Média mensal' : 'Alcance consolidado'; }
     function tone(v) { return v >= 1 ? 'good' : v >= .8 ? 'warn' : 'bad'; }
@@ -1559,7 +1564,7 @@
         const width=Math.max(0,Math.min(100,x.score/1.5*100));
         return `<tr><td class="rank"><span class="rank-badge">${i+topN+1}</span></td><td><div class="leader-button">${avatarButton(x.leader,'size-rest')}<button class="leader-link" data-leader="${esc(x.leader.id)}"><span class="leader-name">${esc(x.leader.name)}</span><span class="leader-sector">${esc(x.leader.sector)}</span></button></div></td><td class="money optional">${compactMoney(x.stats.target)}</td><td class="money optional">${compactMoney(x.stats.received)}</td><td><span class="pill ${tone(x.score)}">${pct(x.score)}</span></td><td class="money optional">${x.stats.months}${opts.util?`<br>${utilTag(x.stats)}`:''}</td><td class="ranking-education-cell">${rankingEducation(x.leader)}</td><td class="rail"><div class="rail-track" title="Marco de 100%"><div class="rail-fill" style="width:${width}%"></div><span class="rail-target"></span></div></td></tr>`;
       }).join('');
-      return `<div class="ranking-board"><section class="ranking-feature"><div class="ranking-feature-head"><div><h3>Top 5 do período</h3><p>${metricLabel()} · clique no card para ver os detalhes${opts.note?' · '+opts.note:''}</p></div></div><div class="podium-grid">${podiumCards}</div>${contenderCards?`<div class="contender-grid">${contenderCards}</div>`:''}</section>${rest.length?`<section class="ranking-rest"><div class="ranking-rest-head"><div><h3>Demais posições</h3><p>${opts.note?'Do '+(topN+1)+'º lugar em diante · líderes com até '+MIN_MONTHS+' meses de dados ficam ao final, qualquer que seja o percentual':'Do '+(topN+1)+'º lugar em diante'}</p></div><span class="photo-hint">Fotos salvas neste navegador</span></div><div class="ranking-table-wrap"><table class="ranking"><thead><tr><th>#</th><th>Líder</th><th class="optional">Meta</th><th class="optional">Recebido</th><th>${metricLabel()}</th><th class="optional">Meses${opts.util?' · aprov.':''}</th><th>Formação</th><th>Régua</th></tr></thead><tbody>${restRows}</tbody></table></div></section>`:''}${unrankedSection(entries.unranked)}</div>`;
+      return `<div class="ranking-board"><section class="ranking-feature"><div class="ranking-feature-head"><div><h3>Top 5 do período</h3><p>${metricLabel()} · clique no card para ver os detalhes${opts.note?' · '+opts.note:''}</p></div></div><div class="podium-grid">${podiumCards}</div>${contenderCards?`<div class="contender-grid">${contenderCards}</div>`:''}</section>${rest.length?`<section class="ranking-rest"><div class="ranking-rest-head"><div><h3>Demais posições</h3><p>${'Do '+(topN+1)+'º lugar em diante'}</p></div><span class="photo-hint">Fotos salvas neste navegador</span></div><div class="ranking-table-wrap"><table class="ranking"><thead><tr><th>#</th><th>Líder</th><th class="optional">Meta</th><th class="optional">Recebido</th><th>${metricLabel()}</th><th class="optional">Meses${opts.util?' · aprov.':''}</th><th>Formação</th><th>Régua</th></tr></thead><tbody>${restRows}</tbody></table></div></section>`:''}${unrankedSection(entries.unranked)}</div>`;
     }
 
     function lineChart(points, options={}) {
@@ -1589,8 +1594,7 @@
     }
 
     function renderOverview() {
-      const leaders=filteredLeaders(), p=portfolio(leaders,PERIODS.year.months), rank0=ranked(leaders,PERIODS.year.months);
-      const elig=rank0.filter(x=>x.stats.months>MIN_MONTHS), rank=[...elig,...rank0.filter(x=>x.stats.months<=MIN_MONTHS)]; rank.unranked=rank0.unranked;
+      const leaders=filteredLeaders(), p=portfolio(leaders,PERIODS.year.months), rank=rankedAnnual(leaders);
       const monthlyPoints=MONTH_KEYS.map(k=>{const ps=portfolio(leaders,[k]);return {label:MONTH_SHORT[k],value:ps.attainment};});
       document.querySelector('#view-overview').innerHTML=`
         <div class="section-head"><div><h2>Visão geral do ano</h2><p>Consolidado de janeiro a outubro, ordenado pelo alcance da meta.</p></div><span class="status-note">Ano parcial</span></div>
@@ -1600,8 +1604,8 @@
           <article class="kpi"><div class="kpi-label">Líderes na meta</div><div class="kpi-value">${p.above}<small style="font-size:.5em;color:var(--muted)"> / ${p.leaders}</small></div><div class="kpi-meta">${p.leaders?pct(p.above/p.leaders):'—'} do recorte selecionado</div></article>
           <article class="kpi"><div class="kpi-label">Liderança do ano</div><div class="kpi-value" style="font-family:var(--display);font-size:24px">${rank[0]?esc(rank[0].leader.name):'—'}</div><div class="kpi-meta">${rank[0]?pct(rank[0].score)+' · '+esc(rank[0].leader.sector):'Sem resultado'}</div></article>
         </div>
-        <div class="section-head"><div><h2>Ranking anual</h2><p>Top 5 entre quem tem mais de 3 meses de dados; os demais vêm logo abaixo. Clique em um líder para abrir o detalhe.</p></div></div>
-        ${rankingTable(rank,999,{eligible:elig.length,util:true,note:'Top 5 só com mais de '+MIN_MONTHS+' meses de dados'})}
+        <div class="section-head"><div><h2>Ranking anual</h2><p>Só entra no ranking anual quem tem 6 meses ou mais de dados; quem tem menos aparece em «Fora do ranking». Clique em um líder para abrir o detalhe.</p></div></div>
+        ${rankingTable(rank,999,{util:true,note:'só quem tem '+MIN_MONTHS+' meses ou mais de dados'})}
         <div class="section-head"><div><h2>Trajetória da operação</h2><p>Percentual mensal consolidado de todos os setores filtrados.</p></div></div>
         <article class="panel"><div class="panel-head"><div><h3>Evolução mensal</h3><p>A linha tracejada marca 100% da meta</p></div><div class="legend"><span class="legend-item"><span class="legend-dot"></span>Resultado</span><span class="legend-item"><span class="legend-line" style="border-top-color:#48b61e"></span>Meta (100%)</span></div></div><div class="panel-body chart-box">${lineChart(monthlyPoints,{label:'Evolução mensal consolidada'})}</div></article>`;
     }
@@ -1639,9 +1643,9 @@
         <div class="section-head"><div><h2>Ranking de ${label}</h2><p>Ordenado pelo percentual de alcance da meta.</p></div></div>${rankingTable(rank)}`;
     }
     function renderLeaders() {
-      const leaders=filteredLeaders(), rank=ranked(leaders,PERIODS.year.months), rankMap=new Map(rank.map((x,i)=>[x.leader.id,i+1]));
+      const leaders=filteredLeaders(), rank=rankedAnnual(leaders), rankMap=new Map(rank.map((x,i)=>[x.leader.id,i+1]));
       document.querySelector('#view-leaders').innerHTML=`<div class="section-head"><div><h2>Todos os líderes</h2><p>Abra um card para consultar trajetória, valores e formação acadêmica.</p></div><span class="status-note">${leaders.length} exibidos</span></div>
-        <div class="leader-grid">${[...rank,...rank.unranked].map(x=>`<article class="leader-card" role="button" tabindex="0" data-leader="${esc(x.leader.id)}"><div class="card-head"><div class="card-identity">${avatarButton(x.leader,'size-card')}<div style="min-width:0"><h3 class="card-name">${esc(x.leader.name)}</h3><p class="card-sector">${esc(x.leader.sector)}</p></div></div><span class="card-rank">${rankMap.has(x.leader.id)?'#'+rankMap.get(x.leader.id):esc(x.leader.role||'—')}</span></div><div class="card-score">${pct(x.score)}</div><div class="kpi-meter"><span style="width:${Math.min(100,(x.score||0)*100)}%"></span></div>${educationBadges(x.leader)}<div class="card-foot"><span>${x.stats.months} meses · ${compactMoney(x.stats.received)}</span><span>Ver detalhes →</span></div></article>`).join('') || '<div class="empty">Nenhum líder encontrado.</div>'}</div>`;
+        <div class="leader-grid">${[...rank,...rank.unranked].map(x=>`<article class="leader-card" role="button" tabindex="0" data-leader="${esc(x.leader.id)}"><div class="card-head"><div class="card-identity">${avatarButton(x.leader,'size-card')}<div style="min-width:0"><h3 class="card-name">${esc(x.leader.name)}</h3><p class="card-sector">${esc(x.leader.sector)}</p></div></div><span class="card-rank">${rankMap.has(x.leader.id)?'#'+rankMap.get(x.leader.id):esc(x.leader.role||(x.short?'< '+MIN_MONTHS+' meses':'—'))}</span></div><div class="card-score">${pct(x.score)}</div><div class="kpi-meter"><span style="width:${Math.min(100,(x.score||0)*100)}%"></span></div>${educationBadges(x.leader)}<div class="card-foot"><span>${x.stats.months} meses · ${compactMoney(x.stats.received)}</span><span>Ver detalhes →</span></div></article>`).join('') || '<div class="empty">Nenhum líder encontrado.</div>'}</div>`;
     }
 
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1680,11 +1684,11 @@
     function openLeader(id) {
       const l=DATA.leaders.find(x=>x.id===id); if(!l) return;
       state.modalLeader=id;
-      const a=aggregate(l,PERIODS.year.months), allRank=ranked(DATA.leaders,PERIODS.year.months), rank=allRank.findIndex(x=>x.leader.id===id)+1;
+      const a=aggregate(l,PERIODS.year.months), allRank=rankedAnnual(DATA.leaders), rank=allRank.findIndex(x=>x.leader.id===id)+1;
       const points=MONTH_KEYS.map(k=>{const m=monthData(l,k);return {label:MONTH_SHORT[k],value:m&&m.attainment!=null?m.attainment:null};});
       setModalAvatar(l);
       document.querySelector('#modalLeaderName').textContent=l.name;
-      document.querySelector('#modalLeaderSector').textContent=l.sector+' · '+(rank?rank+'º no ranking anual':l.role?l.role+' · fora do ranking':'sem posição anual');
+      document.querySelector('#modalLeaderSector').textContent=l.sector+' · '+(rank?rank+'º no ranking anual':l.role?l.role+' · fora do ranking':a.months&&a.months<MIN_MONTHS?'fora do ranking anual · menos de '+MIN_MONTHS+' meses de dados':'sem posição anual');
       document.querySelector('#modalContent').innerHTML=`
         <div class="kpis detail-kpis"><article class="kpi"><div class="kpi-label">Alcance no ano</div><div class="kpi-value">${pct(a.attainment)}</div><div class="kpi-meta">Jan — Out</div></article><article class="kpi"><div class="kpi-label">Recebido</div><div class="kpi-value">${compactMoney(a.received)}</div><div class="kpi-meta">Meta: ${compactMoney(a.target)}</div></article><article class="kpi"><div class="kpi-label">Média mensal</div><div class="kpi-value">${pct(a.monthlyAverage)}</div><div class="kpi-meta">média dos meses com dados</div></article><article class="kpi"><div class="kpi-label">Meses na meta</div><div class="kpi-value">${l.monthly.filter(m=>m.attainment>=1).length}<small style="font-size:.5em;color:var(--muted)"> / ${a.months}</small></div><div class="kpi-meta">meses com ≥ 100%</div></article></div>
         <section class="education-panel"><div class="education-panel-head"><div><h3>Formação acadêmica</h3><p>Situação atual de graduação e pós-graduação</p></div></div>${educationBadges(l)}</section>
